@@ -3,7 +3,7 @@ GMail sorting scripts
 
 These scripts help sort email messages that were downloaded from GMail using `getmail 4.34.0+` into folders based on GMail labels. Currently, only the maildir format is supported. There are three scripts:
 
-* `mailparse.py`: This looks at all the e-mails in a maildir and returns a list of unique labels. I recommend running this before setting up the next two scripts. The "configuration" for this is in the code itself.
+* `mailparse.py`: This looks at all the e-mails in a maildir and returns a list of unique labels. I recommend running this before setting up the next two scripts. It takes one command line argument – the path to the maildir to be parsed.
 
 * `sortchats.py`: This sorts all the chats in a set of maildirs into one "Chats" folder. A group of origin directories and a destination directory is configurable via the `gmailsort_settings.py` file. See `example_settings.py` for more information.
 

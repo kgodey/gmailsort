@@ -1,8 +1,15 @@
-import mailbox, email, shlex
+import mailbox, shlex, argparse, sys
 
-maildir = mailbox.Maildir('/home/kgodey/.maildir/', factory=None, create=False)
-# You can get a list of folders by using maildir.list_folders()
-maildir = maildir.get_folder('kritigodeygmail.Class')
+parser = argparse.ArgumentParser(description='Parses a maildir and prints a list of unique GMail labels.')
+parser.add_argument('path', help="The path to the maildir to be parsed.")
+
+
+args = parser.parse_args()
+try:
+	maildir = mailbox.Maildir(args.path, factory=None, create=False)
+except:
+	sys.exit("%s not a maildir." % args.path)
+	
 all_label_combinations = []
 for message in maildir:
 	if message.has_key('X-GMAIL-LABELS'):
